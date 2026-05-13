@@ -21,6 +21,7 @@ const PARTIAL_CLOSE = 0.08
 // Lerp speed for smooth transitions (adjust for responsiveness vs smoothness)
 const LERP_FACTOR = 0.15
 
+<<<<<<< HEAD
 // Voice presets for different avatars
 const VOICE_PRESETS = {
   human: {
@@ -41,6 +42,9 @@ const VOICE_PRESETS = {
 }
 
 export default function useSpeech(dispatch, avatarType = 'human') {
+=======
+export default function useSpeech(dispatch) {
+>>>>>>> origin/main
   const [voices, setVoices] = useState([])
   const [selectedVoice, setSelectedVoice] = useState(null)
   const [isSupported, setIsSupported] = useState(false)
@@ -143,7 +147,11 @@ export default function useSpeech(dispatch, avatarType = 'human') {
     }
   }
 
+<<<<<<< HEAD
   const speak = (text, { onStart, onEnd, avatarType: speakAvatarType } = {}) => {
+=======
+  const speak = (text, { onStart, onEnd } = {}) => {
+>>>>>>> origin/main
     const synth = window.speechSynthesis
     if (!synth) {
       return
@@ -151,10 +159,13 @@ export default function useSpeech(dispatch, avatarType = 'human') {
 
     stop()
 
+<<<<<<< HEAD
     // Get voice preset based on avatar type
     const currentAvatarType = speakAvatarType || avatarType || 'human'
     const preset = VOICE_PRESETS[currentAvatarType] || VOICE_PRESETS.human
 
+=======
+>>>>>>> origin/main
     // Reset viseme state for new speech
     isSpeakingRef.current = true
     visemeIndexRef.current = 0
@@ -162,6 +173,7 @@ export default function useSpeech(dispatch, avatarType = 'human') {
     targetOpenRef.current = SYLLABLE_OPENS[0]
 
     const utterance = new SpeechSynthesisUtterance(text)
+<<<<<<< HEAD
     utterance.rate = preset.rate
     utterance.pitch = preset.pitch
     utterance.volume = 1.0
@@ -173,6 +185,12 @@ export default function useSpeech(dispatch, avatarType = 'human') {
       )
       utterance.voice = preferredVoice || selectedVoice || voices[0]
     } else if (selectedVoice) {
+=======
+    utterance.rate = 0.95
+    utterance.pitch = 0.85
+    utterance.volume = 1.0
+    if (selectedVoice) {
+>>>>>>> origin/main
       utterance.voice = selectedVoice
     }
 
@@ -230,6 +248,7 @@ export default function useSpeech(dispatch, avatarType = 'human') {
     }
   }
 
+<<<<<<< HEAD
   // Wrapper to speak with specific avatar type
   const speakWithAvatar = (text, options = {}, type) => {
     return speak(text, { ...options, avatarType: type })
@@ -238,6 +257,10 @@ export default function useSpeech(dispatch, avatarType = 'human') {
   return {
     speak,
     speakWithAvatar,
+=======
+  return {
+    speak,
+>>>>>>> origin/main
     stop,
     voices,
     selectedVoice,
