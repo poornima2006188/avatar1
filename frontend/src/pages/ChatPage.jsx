@@ -9,10 +9,7 @@ import detectSentiment, { getSentimentLabel } from '../utils/sentiment'
 import AvatarSVG from '../components/AvatarSVG'
 import CatAvatar from '../components/CatAvatar'
 import SpongeAvatar from '../components/SpongeAvatar'
-<<<<<<< HEAD
 import ChibiAvatar from '../components/ChibiAvatar'
-=======
->>>>>>> origin/main
 import CustomizerPanel from '../components/CustomizerPanel'
 import SpeechBubble from '../components/SpeechBubble'
 import ChatHistory from '../components/ChatHistory'
@@ -32,11 +29,7 @@ export default function ChatPage() {
   const greetedRef = React.useRef(false)
 
   const { ask, isLoading, clearHistory } = useClaude(SYSTEM_PROMPT, token)
-<<<<<<< HEAD
   const { speak, stop, voices, selectedVoice, setVoice, isSupported } = useSpeech(dispatch, state.avatarType)
-=======
-  const { speak, stop, voices, selectedVoice, setVoice, isSupported } = useSpeech(dispatch, token)
->>>>>>> origin/main
   useAvatarBlink(dispatch)
 
   // Redirect if not authenticated
@@ -246,17 +239,11 @@ export default function ChatPage() {
             <div className="welcome-content">
               <div className="welcome-avatar">
                 {state.avatarType === 'cat' ? (
-<<<<<<< HEAD
                   <CatAvatar speaking={false} expr="neutral" />
                 ) : state.avatarType === 'spongebob' ? (
                   <SpongeAvatar speaking={false} />
                 ) : state.avatarType === 'chibi' ? (
                   <ChibiAvatar speaking={false} expr="neutral" blinking={false} />
-=======
-                  <CatAvatar speaking={false} />
-                ) : state.avatarType === 'spongebob' ? (
-                  <SpongeAvatar speaking={false} />
->>>>>>> origin/main
                 ) : (
                   <AvatarSVG {...avatarProps} />
                 )}
@@ -366,11 +353,7 @@ function CustomizerView({ state, dispatch, avatarProps }) {
           <button 
             className="nav-arrow left" 
             onClick={() => {
-<<<<<<< HEAD
               const types = ['human', 'cat', 'spongebob', 'chibi']
-=======
-              const types = ['human', 'cat', 'spongebob']
->>>>>>> origin/main
               const idx = types.indexOf(state.avatarType)
               const nextIdx = (idx - 1 + types.length) % types.length
               dispatch({ type: 'SET_AVATAR_TYPE', payload: types[nextIdx] })
@@ -381,17 +364,11 @@ function CustomizerView({ state, dispatch, avatarProps }) {
 
           <div className="avatar-breathe" style={{ transform: 'scale(2.2)' }}>
             {state.avatarType === 'cat' ? (
-<<<<<<< HEAD
               <CatAvatar speaking={state.speaking} expr={state.expr} />
             ) : state.avatarType === 'spongebob' ? (
               <SpongeAvatar speaking={state.speaking} expr={state.expr} />
             ) : state.avatarType === 'chibi' ? (
               <ChibiAvatar speaking={state.speaking} expr={state.expr} blinking={state.blinking} />
-=======
-              <CatAvatar speaking={state.speaking} />
-            ) : state.avatarType === 'spongebob' ? (
-              <SpongeAvatar speaking={state.speaking} />
->>>>>>> origin/main
             ) : (
               <AvatarSVG {...avatarProps} />
             )}
@@ -400,11 +377,7 @@ function CustomizerView({ state, dispatch, avatarProps }) {
           <button 
             className="nav-arrow right" 
             onClick={() => {
-<<<<<<< HEAD
               const types = ['human', 'cat', 'spongebob', 'chibi']
-=======
-              const types = ['human', 'cat', 'spongebob']
->>>>>>> origin/main
               const idx = types.indexOf(state.avatarType)
               const nextIdx = (idx + 1) % types.length
               dispatch({ type: 'SET_AVATAR_TYPE', payload: types[nextIdx] })
@@ -563,17 +536,11 @@ function ChatView({ state, dispatch, avatarProps, onSend, isLoading }) {
             onClick={() => dispatch({ type: 'TOGGLE_CUSTOMIZE', payload: true })}
           >
             {state.avatarType === 'cat' ? (
-<<<<<<< HEAD
               <CatAvatar speaking={state.speaking} expr={state.expr} />
             ) : state.avatarType === 'spongebob' ? (
               <SpongeAvatar speaking={state.speaking} expr={state.expr} />
             ) : state.avatarType === 'chibi' ? (
               <ChibiAvatar speaking={state.speaking} expr={state.expr} blinking={state.blinking} />
-=======
-              <CatAvatar speaking={state.speaking} />
-            ) : state.avatarType === 'spongebob' ? (
-              <SpongeAvatar speaking={state.speaking} />
->>>>>>> origin/main
             ) : (
               <AvatarSVG {...avatarProps} />
             )}
